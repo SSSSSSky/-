@@ -5,6 +5,7 @@
 #include "malloc.h"
 #include "string.h"
 #include "io.h"
+#include "stdafx.h"
 
 
 #define ERROR 0
@@ -97,7 +98,7 @@ struct SqList
 	void insert(int Index, ElemType elem)
 	{
 		// 判断Index值是否合法，1 <= Index <= UsedLength + 1
-		if (Index < 1 || Index > UsedLength + 1)
+		if (Index < 0 || Index > UsedLength + 1)
 		{
 			printf("Invalid index.\n");
 			exit(ERROR);
@@ -130,7 +131,7 @@ struct SqList
 	void remove(int Index)
 	{
 		// 判断Index值是否合法
-		if (Index < 1 || Index > UsedLength)
+		if (Index < 0 || Index > UsedLength)
 		{
 			printf("Invalid index.\n");
 			exit(ERROR);
@@ -150,7 +151,7 @@ struct SqList
 	ElemType get(int Index)
 	{
 		// 判断Index值是否合法，1 <= Index <= UsedLength + 1
-		if (Index < 1 || Index > UsedLength)
+		if (Index < 0 || Index > UsedLength)
 		{
 			printf("Invalid index.\n");
 			exit(ERROR);
@@ -165,7 +166,7 @@ struct SqList
 	void replace(int Index, ElemType elem)
 	{
 		// 判断Index值是否合法，1 <= Index <= UsedLength + 1
-		if (Index < 1 || Index > UsedLength + 1)
+		if (Index < 0 || Index > UsedLength + 1)
 		{
 			printf("Invalid index.\n");
 			exit(ERROR);
@@ -224,9 +225,9 @@ int main()
 	student2.init(1002, "Banana", "Biology", "87654321", 0, 2002);
 	student3.init(1003, "Cherry", "Chinese", "87654321", 0, 2003);
 
-	sqList.insert(1, student1);
-	sqList.insert(2, student2);
-	sqList.insert(3, student3);
+	sqList.insert(0, student1);
+	sqList.insert(1, student2);
+	sqList.insert(2, student3);
 
 	sqList.print();
 	system("pause");
